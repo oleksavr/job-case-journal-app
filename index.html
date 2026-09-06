@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Case Study — Work Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop">
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="grid"></div>
+  </div>
+
+  <main class="app">
+    <nav class="nav">
+      <div class="brand">
+        <span class="brand-mark">✣</span>
+        <span>CASE<span>STUDY</span></span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#cases">Cases</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#guide">Guide</a>
+        <button id="newCaseTop" class="nav-button">New case</button>
+      </div>
+    </nav>
+
+    <section class="hero parallax-zone" id="top">
+      <div class="hero-copy layer-front">
+        <span class="eyebrow">Private work journal</span>
+        <h1>Write it down.<br><em>Keep the facts.</em></h1>
+        <p>
+          Organize what happens on the job into clear, dated case records you control locally.
+        </p>
+
+        <div class="hero-actions">
+          <button id="newCaseHero" class="primary">Start a case</button>
+          <button id="exportAll" class="outline">Export journal</button>
+        </div>
+      </div>
+
+      <div class="hero-art layer-mid">
+        <div class="card card-back"></div>
+
+        <div class="card card-main">
+          <div class="mini-nav">CASE STUDY <span>FIELD NOTES</span></div>
+          <div class="mini-line"></div>
+          <div class="mini-title">Document<br><b>what happened.</b></div>
+          <div class="mini-badge">LOCAL · PRIVATE</div>
+        </div>
+
+        <div class="card card-front">
+          <span>✣</span>
+          <b>FACTS<br>BEFORE<br>FEAR</b>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div>
+        <b id="caseCount">0</b>
+        <span>cases</span>
+      </div>
+
+      <div>
+        <b id="openCount">0</b>
+        <span>open</span>
+      </div>
+
+      <div>
+        <b id="eventCount">0</b>
+        <span>journal entries</span>
+      </div>
+
+      <div class="privacy">
+        Saved only in this browser · no account required
+      </div>
+    </section>
+
+    <section class="workspace" id="cases">
+      <aside class="sidebar">
+        <div class="section-label">YOUR CASES</div>
+
+        <input id="search" class="search" placeholder="Search cases…">
+
+        <div class="filters">
+          <button class="filter active" data-filter="all">All</button>
+          <button class="filter" data-filter="open">Open</button>
+          <button class="filter" data-filter="review">Review</button>
+          <button class="filter" data-filter="closed">Closed</button>
+        </div>
+
+        <div id="caseList" class="case-list"></div>
+      </aside>
+
+      <section class="detail" id="timeline">
+        <div id="emptyDetail" class="empty-detail">
+          <div class="empty-symbol">✣</div>
+          <h2>Choose a case</h2>
+          <p>
+            Start a case to record the date, location, people involved, witnesses, facts, and follow-up.
+          </p>
+          <button class="primary" id="newCaseEmpty">Create first case</button>
+        </div>
+
+        <div id="caseDetail" hidden></div>
+      </section>
+    </section>
+
+    <section class="guide" id="guide">
+      <div>
+        <span class="eyebrow">A calm structure for hard days</span>
+        <h2>Facts become useful<br>when they have a timeline.</h2>
+      </div>
+
+      <div class="guide-grid">
+        <div>
+          <b>01</b>
+          <p>Record what happened while details are fresh.</p>
+        </div>
+
+        <div>
+          <b>02</b>
+          <p>Separate what you saw from what you believe.</p>
+        </div>
+
+        <div>
+          <b>03</b>
+          <p>Export a clean record before a meeting.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>CASE STUDY · LOCAL WORK JOURNAL</span>
+      <span>Built for clear records and calmer conversations</span>
+    </footer>
+  </main>
+
+  <dialog id="caseDialog">
+    <form method="dialog" id="caseForm">
+      <div class="dialog-head">
+        <div>
+          <span class="eyebrow">NEW RECORD</span>
+          <h2>Create a case</h2>
+        </div>
+
+        <button class="close" value="cancel">×</button>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          Case title
+          <input name="title" required placeholder="Example: Fan airflow coaching">
+        </label>
+
+        <label>
+          Date
+          <input name="date" type="date" required>
+        </label>
+
+        <label>
+          Category
+          <select name="category">
+            <option>Safety</option>
+            <option>HR / coaching</option>
+            <option>Work conditions</option>
+            <option>Conduct</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <label>
+          Status
+          <select name="status">
+            <option value="open">Open</option>
+            <option value="review">Needs review</option>
+            <option value="closed">Closed</option>
+          </select>
+        </label>
+
+        <label>
+          Location
+          <input name="location" placeholder="Department, line, or area">
+        </label>
+
+        <label>
+          People / witnesses
+          <input name="people" placeholder="Names or roles">
+        </label>
+
+        <label class="full">
+          Short summary
+          <textarea name="summary" rows="4" placeholder="What happened? Keep it factual."></textarea>
+        </label>
+      </div>
+
+      <div class="dialog-actions">
+        <button class="outline" value="cancel">Cancel</button>
+        <button class="primary" value="default">Create case</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
